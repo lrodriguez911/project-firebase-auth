@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
 import { auth } from "./firebase.js";
+import {showMessage} from './showMessage.js'
 const signupForm = document.querySelector("#signup-form");
 
 signupForm.addEventListener("submit", async (e) => {
@@ -21,32 +22,19 @@ signupForm.addEventListener("submit", async (e) => {
     const signupModal = document.querySelector("#signupModal");
     const modal = bootstrap.Modal.getInstance(signupModal);
     modal.hide();
-    Toastify({
-      text: "This is a toast",
-      duration: 3000,
-      destination: "https://github.com/apvarun/toastify-js",
-      newWindow: true,
-      close: true,
-      gravity: "top", // `top` or `bottom`
-      position: "left", // `left`, `center` or `right`
-      stopOnFocus: true, // Prevents dismissing of toast on hover
-      style: {
-        background: "linear-gradient(to right, #00b09b, #96c93d)",
-      },
-      onClick: function () {}, // Callback after click
-    }).showToast();
+    showMessage(`Welcome ${userCredentials.user.email}`)
   } catch (error) {
     console.log(error.message);
     console.log(error.code);
 
     if (error.code === "auth/email-already-in-use") {
-      alert("Password is too weak");
+      showMessage("Email already in use", "error")
     } else if (error.code === "auth/weak-password") {
-      alert("Password is too weak");
+      showMessage("Password is too weak", "error")
     } else if (error.code === "auth/invalid-email") {
-      alert("Invalid Email");
+      showMessage("Invalid Email", "error")
     } else if (error.code) {
-      alert("Something went wrong");
+      showMessage(error.message, "error")
     }
   }
 });

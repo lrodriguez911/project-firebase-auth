@@ -41,7 +41,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
+            <li class="nav-item logged-out">
               <a
                 class="nav-link"
                 href="#"
@@ -50,13 +50,20 @@
                 >Signin</a
               >
             </li>
-            <li class="nav-item">
+            <li class="nav-item logged-out">
               <a
                 class="nav-link"
                 href="#"
                 data-bs-toggle="modal"
                 data-bs-target="#signupModal"
                 >Signup</a
+              >
+            </li>
+            <li class="nav-item logged-in" id="logout">
+              <a
+                class="nav-link"
+                href="#"
+                >Logout</a
               >
             </li>
           </ul>
@@ -88,7 +95,7 @@
               <input
                 type="email"
                 name="email"
-                id="email"
+                id="login-email"
                 class="form-control"
                 placeholder="Email"
                 required
@@ -98,14 +105,15 @@
               <input
                 type="password"
                 name="password"
-                id="password"
+                id="login-password"
                 class="form-control"
                 placeholder="****"
                 required
               />
 
-              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="submit" class="btn btn-primary mt-3 w-100 mb-4">Login</button>
             </form>
+            <button type="button"id="googleLogin" class="btn btn-info">Google</button>
           </div>
         </div>
       </div>
@@ -151,10 +159,11 @@
                 required
               />
 
-              <button type="submit" class="btn btn-primary mt-3">
+              <button type="submit" class="btn btn-primary mt-3 mb-4 w-100">
                 Register
               </button>
             </form>
+            
           </div>
         </div>
       </div>
