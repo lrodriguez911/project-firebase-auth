@@ -1,13 +1,13 @@
 import {
-  GoogleAuthProvider,
+  FacebookAuthProvider,
   signInWithPopup,
 } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
 import { auth } from "./firebase.js";
 import { showMessage } from "./showMessage.js";
-const googleButton = document.querySelector("#googleLogin");
+const facebookButton = document.querySelector("#facebookLogin");
 
-googleButton.addEventListener("click", async () => {
-  const provider = new GoogleAuthProvider();
+facebookButton.addEventListener("click", async () => {
+  const provider = new FacebookAuthProvider();
 
   try {
     const credentials = await signInWithPopup(auth, provider);

@@ -23,6 +23,8 @@ singinForm.addEventListener("submit", async (e) => {
       showMessage("Wrong password", "error");
     } else if (error.code === "auth/user-not-found") {
       showMessage("User not found", "error");
+    } else if (error.code === "auth/account-exists-with-different-credential") {
+      showMessage("User registered whit anohter method or provider", "error");
     } else {
       showMessage(error.message, "error");
     }
